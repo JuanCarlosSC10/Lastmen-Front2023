@@ -1,17 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { VeterinarioModel } from 'src/app/models/veterinario.model';
-import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { ProveedorModel } from 'src/app/models/proveedor.model';
+import { ProveedorService } from 'src/app/service/proveedor.service';
 
 @Component({
-  selector: 'app-veterinario-register',
-  templateUrl: './veterinario-register.component.html',
-  styleUrls: ['./veterinario-register.component.css']
+  selector: 'app-proveedor-register',
+  templateUrl: './proveedor-register.component.html',
+  styleUrls: ['./proveedor-register.component.css']
 })
-export class VeterinarioRegisterComponent implements OnInit {
+export class ProveedorRegisterComponent implements OnInit {
 
   /*VARIABLES DE ENTRADA */
-  @Input() veterinario: VeterinarioModel = new VeterinarioModel();
+  @Input() proveedor: ProveedorModel = new ProveedorModel();
   /*VARIABLES DE SALIDA */
   @Output() closeModalEmmit = new EventEmitter<boolean>();
 
@@ -19,16 +19,15 @@ export class VeterinarioRegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _veterinarioService: VeterinarioService
+    private _proveedorService: ProveedorService
   ) {
     this.myForm = this.fb.group({
-      
-      idMedico: [null, [Validators.required]],
-      nombres: [null, [Validators.required]],
-      apellidos: [null, [Validators.required]],
-      dni: [null, [Validators.required]],
+      idProveedor: [null, [Validators.required]],
+      nombre: [null, [Validators.required]],
+      ruc: [null, [Validators.required]],
       direccion: [null, [Validators.required]],
-      celular: [null, [Validators.required]],
+      telefono: [null, [Validators.required]],
+      correo: [null, [Validators.required]],
     });
   }
 
@@ -37,7 +36,7 @@ export class VeterinarioRegisterComponent implements OnInit {
   ngOnInit(): void {
     /*FIXME: SET VALUE TRAE ERRORES CUANDO LOS ATRIBUTOS NO COINCIDEN AL 100% */
     //this.myForm.setValue(this.estado);
-    this.myForm.patchValue(this.veterinario);
+    this.myForm.patchValue(this.proveedor);
   }
 
   closeModal(res: boolean) {
@@ -49,23 +48,23 @@ export class VeterinarioRegisterComponent implements OnInit {
     /*FIXME: SI POR A O B, TENEMOS UN CAMPO DES-HABILITADO DESDE ANGULAR / NO TRAE ESE VALOR */
     //this.estado = this.myForm.value();
     
-    this.veterinario = this.myForm.getRawValue();
+    this.proveedor = this.myForm.getRawValue();
     debugger;
-    if(this.veterinario.idMedico == 0)
+    if(this.proveedor.idProveedor == 0)
     {
-      this.createVeterinario();
+      this.createProveedor();
       
     }
     else{
-      this.updateVeterinario();
+      this.updateProveedor();
     }
 
   }
 
-  createVeterinario()
+  createProveedor()
   {
-    this._veterinarioService.create(this.veterinario).subscribe(
-      (data:VeterinarioModel)=>{
+    this._proveedorService.create(this.proveedor).subscribe(
+      (data:ProveedorModel)=>{
         alert("Registro creado de forma satisfactoría");
         this.closeModalEmmit.emit(true);
       },
@@ -75,10 +74,10 @@ export class VeterinarioRegisterComponent implements OnInit {
       }
     );
   }
-  updateVeterinario()
+  updateProveedor()
   {
-    this._veterinarioService.update(this.veterinario).subscribe(
-      (data:VeterinarioModel)=>{
+    this._proveedorService.update(this.proveedor).subscribe(
+      (data:ProveedorModel)=>{
         alert("Registro actualizado de forma satisfactoría");
         this.closeModalEmmit.emit(true);
       },
@@ -87,5 +86,7 @@ export class VeterinarioRegisterComponent implements OnInit {
         this.closeModalEmmit.emit(false);
       }
     );
-  }
+  } 
+
 }
+

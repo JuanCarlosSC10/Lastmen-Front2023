@@ -35,7 +35,36 @@
                     [value]="i.idCategoria"
                     *ngFor="let i of categoria" >{{i.nombreCategoria}} </option>
                 </select>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Unidad de Medida</strong></label>
+                <input type="text" class="form-control" formControlName="unidad_Medida" placeholder="Ingrese la unidad de medida">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Proveedor</strong></label>
+                <select class="form-select" name="idProveedor" formControlName="idProveedor" >
+                   <option value="0">Seleccione el Proveedor</option>
+                    <!-- <option 
+                    [value]="i.idProveedor"
+                    *ngFor="let i of proveedor" >{{i.nombre}} </option> -->
+                </select>
               
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Precio Producto</strong></label>
+                <input type="number"  step="any"step=".01"class="form-control" formControlName="precioProducto"  placeholder="Ingrese precio de producto" >
             </div>
         </div>
     </div>
@@ -66,7 +95,23 @@
     <div class="row mt-3">
         <div class="col-12">
             <div class="form-group">
-                <label for=""><strong>Fecha fechaIngreso</strong></label>
+                <label for=""><strong>Lote</strong></label>
+                <input type="text" class="form-control" formControlName="lote" placeholder="Ingrese Lote">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Fecha Vencimiento</strong></label>
+                <input type="date" class="form-control" formControlName="fechaVencimiento" placeholder="Ingrese Fecha Vencimiento">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Fecha Ingreso</strong></label>
                 <input type="date" class="form-control" formControlName="fechaIngreso" placeholder="Ingrese Fecha">
             </div>
         </div>

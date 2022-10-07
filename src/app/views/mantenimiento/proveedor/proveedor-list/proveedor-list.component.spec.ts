@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ProveedorListComponent } from './proveedor-list.component';
 
-import { CitaListComponent } from './cita-list.component';
-
-describe('CitaListComponent', () => {
-  let component: CitaListComponent;
-  let fixture: ComponentFixture<CitaListComponent>;
+describe('ProveedorListComponent', () => {
+  let component: ProveedorListComponent;
+  let fixture: ComponentFixture<ProveedorListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CitaListComponent ]
+      declarations: [ ProveedorListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CitaListComponent);
+    fixture = TestBed.createComponent(ProveedorListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

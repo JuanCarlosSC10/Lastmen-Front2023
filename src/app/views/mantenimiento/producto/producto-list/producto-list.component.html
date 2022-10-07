@@ -20,8 +20,12 @@
         <th>Categoria</th>
         <th>Precio Compra</th>
         <th>Precio Venta</th>
+        <th>Precio Producto</th>
+        <th>Lote</th>
+        <th>Unidad Medida</th>
         <th>Stock</th>
         <th>Fecha Ingreso</th>
+        <th>Fecha Vencimiento</th>
         <th>
           <button (click)="crearRegistro(template)" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
@@ -39,8 +43,12 @@
         <td>{{ categoriaTipoMap.get(d.idCategoria) }}</td>
         <td>{{ d.precioCompra | currency: "S/. "}}</td>
         <td>{{ d.precioVenta | currency: "S/. "}}</td>
+        <td>{{ d.precioProducto | currency: "S/. "}}</td>
+        <td>{{ d.lote }}</td>
+        <td>{{ d.unidad_Medida }}</td>
         <td>{{ d.cantidad}}</td>
         <td>{{ d.fechaIngreso}}</td>
+        <td>{{ d.fechaVencimiento}}</td>
 
 
         <td>

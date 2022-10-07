@@ -1,16 +1,23 @@
-
-
+<div class="container mt-5">
+  <div class="input-group">
+    <legend>Busqueda</legend>
+    <div class = "input-group-text bg-white">
+      <i class="fas fa-search"></i>
+    </div>
+    <input type="text" class="form-control" name="filtro" placeholder="Buscar por nombre..." [(ngModel)]="filtro" > 
+  </div>
+</div>
 <div class="container mt-5">
     <table class="table table-bordered table-striped">
       <thead class="bg-dark text-white">              
         <tr>
           <th>#</th>
-          <th hidden>CODIGO CITA</th>
-          <th>NOMBRE MASCOTA</th>
-          <th>VETERINARIO</th>
-          <th>FECHA</th> 
-  	    <th>HORA</th>
-	    <th>OBSERVACIONES</th>  
+          <th hidden>CODIGO PROVEEDOR</th>
+          <th>NOMBRES </th>
+          <th hidden>RUC</th>
+          <th>DIRECCION</th>
+          <th>TELEFONO</th>
+          <th>CORREO</th> 
           <th>
             <button
               (click)="crearRegistro(template)"
@@ -22,14 +29,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let d of citas,let indice=index">
+        <tr *ngFor="let d of proveedor| filtroProveedor:filtro|paginate: { itemsPerPage: 6, currentPage: page } ,let indice=index">
           <td>{{ indice + 1 }}</td>
-          <td hidden>{{ d.idCita }} </td>
-          <td>{{mascotalisMap.get( d.idMascota) }}</td>
-          <td>{{ veterinariolistMap.get(d.idMedico) }}</td>
-          <td>{{ d.fecha }}</td> 
-          <td>{{ d.hora}}</td> 
-          <td>{{ d.observaciones}}</td>        
+          <td hidden>{{ d.codProveedor }} </td>
+          <td>{{ d.nombres }}</td>
+          <td hidden>{{ d.ruc }}</td> 
+          <td>{{ d.direccion }}</td>
+          <td>{{ d.telefono }}</td> 
+          <td>{{ d.correo}}</td>      
           <td>
             <!-- inicio boton editar -->
             <button
@@ -73,12 +80,17 @@
       [] ==> variable de entrada
       () ==> variable de salida
       -->
-      <app-cita-register
-        [citas]="citaSelected"
+      <app-clientes-register
+        [clientes]="proveedorSelected"
         (closeModalEmmit)="recibeCloseModal($event)"
-      ></app-cita-register>
+      ></app-clientes-register>
     </div>
   </ng-template>
+  <pagination-controls  
+                      (pageChange)="page = $event"
+                      previousLabel="Anterior"
+                      nextLabel="siguiente"
+                      >
+</pagination-controls>
 
-
-
+  

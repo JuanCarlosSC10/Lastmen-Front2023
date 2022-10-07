@@ -1,38 +1,35 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MascotasModel } from 'src/app/models/mascota.model';
-import { MascotaService } from 'src/app/service/mascota.service';
-import {ClientesService} from'src/app/service/clientes.service';
-import { Observable } from 'rxjs';
+import { ClienteModel } from 'src/app/models/clientes.model';
+import { ClientesService } from 'src/app/service/clientes.service';
 
 @Component({
-  selector: 'app-mascota-register',
-  templateUrl: './mascota-register.component.html',
-  styleUrls: ['./mascota-register.component.css']
+  selector: 'app-clientes-register',
+  templateUrl: './clientes-register.component.html',
+  styleUrls: ['./clientes-register.component.css']
 })
-export class MascotaRegisterComponent implements OnInit {
+export class ClientesRegisterComponent implements OnInit {
 
   /*VARIABLES DE ENTRADA */
-  @Input() mascota: MascotasModel = new MascotasModel();
+  @Input() clientes: ClienteModel = new ClienteModel();
   /*VARIABLES DE SALIDA */
   @Output() closeModalEmmit = new EventEmitter<boolean>();
 
   myForm: FormGroup;
-  cliente$!:Observable<any[]>;
-  cliente:any=[];
+
   constructor(
-    private _clienteservice:ClientesService,
     private fb: FormBuilder,
-    private _mascotaService: MascotaService
+    private _clientesService: ClientesService
   ) {
     this.myForm = this.fb.group({
       
-      idMascota: [null, [Validators.required]],
       codCliente: [null, [Validators.required]],
-      raza: [null, [Validators.required]],
+      ruc: [null, [Validators.required]],
+      direccion: [null, [Validators.required]],
+      celular: [null, [Validators.required]],
+      email: [null, [Validators.required]],
       nombres: [null, [Validators.required]],
-      peso: [null, [Validators.required]],
-      fechaNacimiento: [null, [Validators.required]],
+      dni: [null, [Validators.required]],
     });
   }
 
@@ -41,13 +38,7 @@ export class MascotaRegisterComponent implements OnInit {
   ngOnInit(): void {
     /*FIXME: SET VALUE TRAE ERRORES CUANDO LOS ATRIBUTOS NO COINCIDEN AL 100% */
     //this.myForm.setValue(this.estado);
-    this.myForm.patchValue(this.mascota);
-    this.clientegetall();
-  }
-  clientegetall(){
-    this._clienteservice.getAll().subscribe(data=>{
-      this.cliente=data;
-    })
+    this.myForm.patchValue(this.clientes);
   }
 
   closeModal(res: boolean) {
@@ -59,23 +50,23 @@ export class MascotaRegisterComponent implements OnInit {
     /*FIXME: SI POR A O B, TENEMOS UN CAMPO DES-HABILITADO DESDE ANGULAR / NO TRAE ESE VALOR */
     //this.estado = this.myForm.value();
     
-    this.mascota = this.myForm.getRawValue();
+    this.clientes = this.myForm.getRawValue();
     debugger;
-    if(this.mascota.idMascota == 0)
+    if(this.clientes.codCliente == 0)
     {
-      this.createMascota();
+      this.createClientes();
       
     }
     else{
-      this.updateMascota();
+      this.updateClientes();
     }
 
   }
 
-  createMascota()
+  createClientes()
   {
-    this._mascotaService.create(this.mascota).subscribe(
-      (data:MascotasModel)=>{
+    this._clientesService.create(this.clientes).subscribe(
+      (data:ClienteModel)=>{
         alert("Registro creado de forma satisfactoría");
         this.closeModalEmmit.emit(true);
       },
@@ -85,10 +76,10 @@ export class MascotaRegisterComponent implements OnInit {
       }
     );
   }
-  updateMascota()
+  updateClientes()
   {
-    this._mascotaService.update(this.mascota).subscribe(
-      (data:MascotasModel)=>{
+    this._clientesService.update(this.clientes).subscribe(
+      (data:ClienteModel)=>{
         alert("Registro actualizado de forma satisfactoría");
         this.closeModalEmmit.emit(true);
       },
@@ -97,5 +88,7 @@ export class MascotaRegisterComponent implements OnInit {
         this.closeModalEmmit.emit(false);
       }
     );
-  }
+  } 
+
 }
+

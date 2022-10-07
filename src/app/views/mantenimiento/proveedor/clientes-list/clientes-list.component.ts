@@ -1,36 +1,36 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { VeterinarioModel } from 'src/app/models/veterinario.model';
-import { VeterinarioService } from 'src/app/service/veterinario.service';
+import {  ClienteModel } from 'src/app/models/clientes.model';
+import { ClientesService } from 'src/app/service/clientes.service';
 
 
 @Component({
-  selector: 'app-veterinario-list',
-  templateUrl: './veterinario-list.component.html',
-  styleUrls: ['./veterinario-list.component.css']
+  selector: 'app-clientes-list',
+  templateUrl: './clientes-list.component.html',
+  styleUrls: ['./clientes-list.component.css']
 })
-export class VeterinarioListComponent implements OnInit {
+export class ClientesListComponent implements OnInit {
   modalRef?: BsModalRef;
-
-  veterinario:VeterinarioModel[] = [];
-  veterinarioSelected:VeterinarioModel = new VeterinarioModel();
+  clientes:ClienteModel[] = [];
+  clientesSelected:ClienteModel = new ClienteModel();
   tituloModal:string = "";
-  page=0;
   filtro='';
+  page =0;
   constructor(
-    private _veterinarioService:VeterinarioService,
+    private _clientesService:ClientesService,
     private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
-    this.getAllVeterinario();
+    this.getAllClientes();
   }
 
-  getAllVeterinario()
+  getAllClientes()
   {
-    this._veterinarioService.getAll().subscribe(
-      (data:VeterinarioModel[]) => {
-        this.veterinario = data;
+    debugger;
+    this._clientesService.getAll().subscribe(
+      (data:ClienteModel[] ) => {
+        this.clientes = data;
         console.log(data);
       },
       err => {
@@ -39,17 +39,17 @@ export class VeterinarioListComponent implements OnInit {
     );
   }
 
-  editarRegistro(veterinario:VeterinarioModel,template: TemplateRef<any>)
+  editarRegistro(clientes:ClienteModel,template: TemplateRef<any>)
   {
     this.tituloModal="EDITAR REGISTRO";
-    this.veterinarioSelected = veterinario;
+    this.clientesSelected = clientes;
     this.openModal(template);
   }
 
   crearRegistro(template: TemplateRef<any>)
   {
     this.tituloModal="CREAR REGISTRO";
-    this.veterinarioSelected = new VeterinarioModel();
+    this.clientesSelected = new ClienteModel();
     this.openModal(template);
   }
 
@@ -62,23 +62,23 @@ export class VeterinarioListComponent implements OnInit {
   {
     if(res) //==> si es verdadero
     {
-      this.getAllVeterinario();      
+      this.getAllClientes();      
     }
     this.modalRef?.hide();
   }
 
 
-  modalDelete(veterinario:VeterinarioModel)
+  modalDelete(clientes:ClienteModel)
   {
     let res = confirm("Está seguro de eliminar el registro");
 
     if(res) // si es verdadero
     {
-      this._veterinarioService.delete(veterinario.idMedico).subscribe(
+      this._clientesService.delete(clientes.codCliente).subscribe(
         (data:number)=>{
           console.log(data);
           alert("registro eliminado de forma satisfactoría");
-          this.getAllVeterinario();
+          this.getAllClientes();
         },
         err =>{
           //alert("ocurrio un error");
