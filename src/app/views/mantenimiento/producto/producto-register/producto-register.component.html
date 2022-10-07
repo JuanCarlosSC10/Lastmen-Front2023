@@ -1,0 +1,81 @@
+<form [formGroup]="myForm">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label hidden for=""><strong>Código</strong></label>
+                <input hidden type="number" class="form-control" formControlName="idProducto" readonly>
+            </div>
+        </div>
+    </div>
+  
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Nombre del Producto</strong></label>
+                <input type="text" class="form-control" formControlName="nombreProducto" placeholder="Ingrese Nombre del producto">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Descripcion</strong></label>
+                <input type="text" class="form-control" formControlName="descripcion" placeholder="Ingrese Descripcion del Producto">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Categoria</strong></label>
+                <select class="form-select" name="idCategoria" formControlName="idCategoria" >
+                   <option value="0">Seleccione una Categoria</option>
+                    <option 
+                   
+                    [value]="i.idCategoria"
+                    *ngFor="let i of categoria" >{{i.nombreCategoria}} </option>
+                </select>
+              
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Precio Compra</strong></label>
+                <input type="number"  step="any"step=".01"class="form-control" formControlName="precioCompra"  placeholder="Ingrese precio de compra" >
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Precio Venta</strong></label>
+                <input type="number" class="form-control" formControlName="precioVenta" placeholder="Ingrese precio de venta">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Cantidad</strong></label>
+                <input type="number" class="form-control" formControlName="cantidad" placeholder="Ingrese Cantidad">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Fecha fechaIngreso</strong></label>
+                <input type="date" class="form-control" formControlName="fechaIngreso" placeholder="Ingrese Fecha">
+            </div>
+        </div>
+    </div>
+   
+    <div class="row mt-4">
+        <div class="col-12 ">
+            <button (click)="save()" class="btn btn-primary btn-sm float-end mr-2 ml-2"> <i class="fas fa-save"></i> Guardar</button>
+            <button (click)="closeModal(false)" class="btn btn-danger btn-sm float-end mr-2 ml-2"> <i class="fas fa-ban"></i> Cancelar</button>
+        </div>
+    </div>
+</form>

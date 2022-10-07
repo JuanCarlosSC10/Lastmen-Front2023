@@ -1,0 +1,67 @@
+<form [formGroup]="myForm">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label hidden for=""><strong>CODIGO CLIENTE</strong></label>
+                <input hidden type="number" class="form-control" formControlName="codCliente" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>NOMBRES / RAZON SOCIAL</strong></label>
+                <input type="text" class="form-control" formControlName="nombres" placeholder="Ingrese nombre">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>DNI</strong></label>
+                <input type="text" class="form-control" formControlName="dni" placeholder="Ingrese dni" >
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>RUC</strong></label>
+                <input type="text" class="form-control" formControlName="ruc" placeholder="Ingrese el Ruc">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>DIRECCION</strong></label>
+                <input type="text" class="form-control" formControlName="direccion" placeholder="Ingrese la Direccion">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>CELULAR</strong></label>
+                <input type="text" class="form-control" formControlName="celular" placeholder="Ingrese el celular" >
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>EMAIL</strong></label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Ingrese el Email">
+            </div>
+        </div>
+    </div>
+    
+    
+   
+    <div class="row mt-4">
+        <div class="col-12 ">
+            <button (click)="save()" class="btn btn-primary btn-sm float-end mr-2 ml-2"> <i class="fas fa-save"></i> Guardar</button>
+            <button (click)="closeModal(false)" class="btn btn-danger btn-sm float-end mr-2 ml-2"> <i class="fas fa-ban"></i> Cancelar</button>
+        </div>
+    </div>
+  </form>

@@ -1,0 +1,70 @@
+<form [formGroup]="myForm">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label hidden for=""><strong>Cita</strong></label>
+                <input hidden type="number" class="form-control" formControlName="idCita" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Mascota</strong></label>
+                <select class="form-select" name="idMascota" formControlName="idMascota" >
+                   <option value="0">Seleccione una Mascota</option>
+                    <option 
+                    [value]="i.idMascota"
+                    *ngFor="let i of mascota" >{{i.nombres}} </option>
+                </select>
+              
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Especialista</strong></label>
+                <select class="form-select" name="idMedico" formControlName="idMedico" >
+                   <option value="0">Seleccione un Veterinario</option>
+                    <option 
+                   
+                    [value]="i.idMedico"
+                    *ngFor="let i of veterinario" >{{i.nombres}} </option>
+                </select>
+              
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Fecha</strong></label>
+                <input type="date" class="form-control" name="fecha" formControlName="fecha" >
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Hora</strong></label>
+                <input type="time" class="form-control"  name="hora" formControlName="hora">
+                <!-- <input type="text" class="form-control" formControlName="hora " placeholder="Ingrese Hora"> -->
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o" ></i></span>
+                            <div class="col-md-8">
+                                <!-- <input type="text" class="form-control" formControlName="observaciones " placeholder="Ingrese Observaciones"> -->
+                                <textarea class="form-control" name="observaciones" formControlName="observaciones" placeholder="Ingrese Observaciones" rows="3"></textarea>
+                            </div>
+                        </div>
+    <div class="row mt-4">
+        <div class="col-12 ">
+            <button (click)="save()" class="btn btn-primary btn-sm float-end mr-2 ml-2"> <i class="fas fa-save"></i> Guardar</button>
+            <button (click)="closeModal(false)" class="btn btn-danger btn-sm float-end mr-2 ml-2"> <i class="fas fa-ban"></i> Cancelar</button>
+            
+        </div>
+    </div>
+</form>
