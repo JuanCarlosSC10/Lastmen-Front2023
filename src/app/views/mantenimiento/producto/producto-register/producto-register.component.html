@@ -52,9 +52,9 @@
                 <label for=""><strong>Proveedor</strong></label>
                 <select class="form-select" name="idProveedor" formControlName="idProveedor" >
                    <option value="0">Seleccione el Proveedor</option>
-                    <!-- <option 
+                    <option 
                     [value]="i.idProveedor"
-                    *ngFor="let i of proveedor" >{{i.nombre}} </option> -->
+                    *ngFor="let i of proveedor" >{{i.nombre}} </option>
                 </select>
               
             </div>
@@ -65,22 +65,6 @@
             <div class="form-group">
                 <label for=""><strong>Precio Producto</strong></label>
                 <input type="number"  step="any"step=".01"class="form-control" formControlName="precioProducto"  placeholder="Ingrese precio de producto" >
-            </div>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-12">
-            <div class="form-group">
-                <label for=""><strong>Precio Compra</strong></label>
-                <input type="number"  step="any"step=".01"class="form-control" formControlName="precioCompra"  placeholder="Ingrese precio de compra" >
-            </div>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-12">
-            <div class="form-group">
-                <label for=""><strong>Precio Venta</strong></label>
-                <input type="number" class="form-control" formControlName="precioVenta" placeholder="Ingrese precio de venta">
             </div>
         </div>
     </div>

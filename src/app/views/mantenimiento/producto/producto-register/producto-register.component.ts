@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductoModel } from 'src/app/models/producto.model';
 import { ProductoService } from 'src/app/service/producto.service';
 import{CategoriaService} from'src/app/service/categoria.service';
+import{ProveedorService} from'src/app/service/proveedor.service';
 import { Observable } from 'rxjs';
 
 
@@ -22,8 +23,11 @@ export class ProductoRegisterComponent implements OnInit {
 
   categoria$!:Observable<any[]>;
   categoria:any=[];
+  proveedor$!:Observable<any[]>;
+  proveedor:any=[];
   constructor(
     private _categoriaservice:CategoriaService,
+    private _proveedorservice:ProveedorService,
     private fb: FormBuilder,
     private _productoService: ProductoService
   ) {
@@ -52,8 +56,14 @@ export class ProductoRegisterComponent implements OnInit {
     //this.myForm.setValue(this.estado);
     this.myForm.patchValue(this.producto);
     this.categoriagetall();
+    this.proveedorgetall();
   }
 
+  proveedorgetall(){
+    this._proveedorservice.getAll().subscribe(data=>{
+      this.proveedor=data;
+    })
+  }
   categoriagetall(){
     this._categoriaservice.getAll().subscribe(data=>{
       this.categoria=data;

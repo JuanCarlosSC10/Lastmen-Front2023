@@ -2,7 +2,7 @@
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {  ProductoModel } from 'src/app/models/producto.model';
 import { ProductoService } from 'src/app/service/producto.service';
-import{CategoriaService} from'src/app/service/categoria.service';
+import { CategoriaService} from'src/app/service/categoria.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -24,8 +24,6 @@ export class ProductoListComponent implements OnInit {
     {header: 'NOMBRE DEL PRODUCTO',datakey:'nombreProducto'},
     {header: 'DESCRIPCION',datakey:'descripcion'},
     {header: 'ID DE CATEGORIA',datakey:'idCategoria'},
-    {header: 'PRECIO COMPRA',datakey:'precioCompra'},
-    {header: 'PRECIO VENTA',datakey:'precioVenta'},
     {header: 'STOCK',datakey:'cantidad'},
     {header: 'FECHA DE INGRESO',datakey:'fechaIngreso'},
   ];
@@ -68,8 +66,6 @@ export class ProductoListComponent implements OnInit {
           'nombreProducto': x.nombreProducto,
           'descripcion': x.descripcion,
           'idCategoria': x.idCategoria,
-          'precioCompra': x.precioCompra,
-          'precioVenta': x.precioVenta,
           'cantidad': x.cantidad,
           'fechaIngreso': x.fechaIngreso,         
           });

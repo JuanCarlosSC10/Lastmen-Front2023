@@ -5,14 +5,12 @@ import { ProveedorRoutingModule } from './proveedor-routing.module';
 import { ProveedorListComponent } from './proveedor-list/proveedor-list.component';
 import { ProveedorRegisterComponent } from './proveedor-register/proveedor-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FiltroClientePipe } from '../../../pipes/filtro-cliente.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     ProveedorListComponent,
     ProveedorRegisterComponent,
-    FiltroClientePipe
   ],
   imports: [
     CommonModule,
@@ -23,4 +21,4 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule
   ]
 })
-export class ClientesModule { }
+export class ProveedorModule { }

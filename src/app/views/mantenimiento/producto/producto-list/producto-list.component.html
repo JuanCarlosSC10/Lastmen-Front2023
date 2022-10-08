@@ -18,8 +18,6 @@
         <th>Nombre Produto</th>
         <th>Descripcion</th>
         <th>Categoria</th>
-        <th>Precio Compra</th>
-        <th>Precio Venta</th>
         <th>Precio Producto</th>
         <th>Lote</th>
         <th>Unidad Medida</th>
@@ -41,8 +39,6 @@
         <td>{{ d.nombreProducto }}</td>
         <td>{{ d.descripcion }}</td>
         <td>{{ categoriaTipoMap.get(d.idCategoria) }}</td>
-        <td>{{ d.precioCompra | currency: "S/. "}}</td>
-        <td>{{ d.precioVenta | currency: "S/. "}}</td>
         <td>{{ d.precioProducto | currency: "S/. "}}</td>
         <td>{{ d.lote }}</td>
         <td>{{ d.unidad_Medida }}</td>

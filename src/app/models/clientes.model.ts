@@ -1,19 +1,17 @@
 export class ClienteModel {
-    codCliente: number;
-    ruc: string;
+    idCliente: number;
+    nombres: string;
+    apellidos: string;
     direccion: string;
     celular: string;
-    email: string;
-    nombres:string;
     dni:string;
  
     constructor() {
-        this.codCliente = 0;
-        this.ruc = "";
+        this.idCliente = 0;
+        this.nombres = "";
+        this.apellidos = "";
         this.direccion = "";
         this.celular = "";
-        this.email = "";
-        this.nombres="";
         this.dni="";
     }
 }

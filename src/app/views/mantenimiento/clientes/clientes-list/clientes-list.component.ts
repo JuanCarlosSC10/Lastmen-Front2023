@@ -74,7 +74,7 @@ export class ClientesListComponent implements OnInit {
 
     if(res) // si es verdadero
     {
-      this._clientesService.delete(clientes.codCliente).subscribe(
+      this._clientesService.delete(clientes.idCliente).subscribe(
         (data:number)=>{
           console.log(data);
           alert("registro eliminado de forma satisfactoría");

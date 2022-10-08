@@ -3,8 +3,6 @@ export class ProductoModel {
     idCategoria: number;
     idProveedor : number;
     nombreProducto: string;
-    precioCompra: number;
-    precioVenta: number;
     precioProducto: number;
     cantidad: number;
     lote: string;
@@ -19,8 +17,6 @@ export class ProductoModel {
         this.idCategoria = 0;
         this.idProveedor=0;
         this.nombreProducto = "";
-        this.precioCompra = 0.00;
-        this.precioVenta = 0.00;
         this.precioProducto= 0.00;
         this.cantidad = 0;
         this.lote= "";

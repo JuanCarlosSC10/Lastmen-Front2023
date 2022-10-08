@@ -11,7 +11,6 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioListComponent implements OnInit {
   modalRef?: BsModalRef;
-
   usuario:UsuarioModel[] = [];
   usuarioSelected:UsuarioModel = new UsuarioModel();
   tituloModal:string = "";

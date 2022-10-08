@@ -29,10 +29,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let d of proveedor| filtroProveedor:filtro|paginate: { itemsPerPage: 6, currentPage: page } ,let indice=index">
+        <tr *ngFor="let d of proveedor |paginate: { itemsPerPage: 6, currentPage: page } ,let indice=index">
           <td>{{ indice + 1 }}</td>
-          <td hidden>{{ d.codProveedor }} </td>
-          <td>{{ d.nombres }}</td>
+          <td hidden>{{ d.idProveedor }} </td>
+          <td>{{ d.nombre }}</td>
           <td hidden>{{ d.ruc }}</td> 
           <td>{{ d.direccion }}</td>
           <td>{{ d.telefono }}</td> 
@@ -61,7 +61,7 @@
     </table>
   </div>
   
-  <ng-template #template>
+   <ng-template #template>
     <div class="modal-header">
       <h4 class="modal-title pull-left">
         {{ tituloModal }}
@@ -76,16 +76,13 @@
       </button>
     </div>
     <div class="modal-body">
-      <!--
-      [] ==> variable de entrada
-      () ==> variable de salida
-      -->
-      <app-clientes-register
-        [clientes]="proveedorSelected"
+      
+      <app-proveedor-register
+        [proveedor]="proveedorSelected"
         (closeModalEmmit)="recibeCloseModal($event)"
-      ></app-clientes-register>
+      ></app-proveedor-register>
     </div>
-  </ng-template>
+  </ng-template> 
   <pagination-controls  
                       (pageChange)="page = $event"
                       previousLabel="Anterior"

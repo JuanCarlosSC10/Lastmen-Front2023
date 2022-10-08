@@ -23,12 +23,11 @@ export class ClientesRegisterComponent implements OnInit {
   ) {
     this.myForm = this.fb.group({
       
-      codCliente: [null, [Validators.required]],
-      ruc: [null, [Validators.required]],
+      idCliente: [null, [Validators.required]],
+      nombres: [null, [Validators.required]],
+      apellidos: [null, [Validators.required]],
       direccion: [null, [Validators.required]],
       celular: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      nombres: [null, [Validators.required]],
       dni: [null, [Validators.required]],
     });
   }
@@ -52,7 +51,7 @@ export class ClientesRegisterComponent implements OnInit {
     
     this.clientes = this.myForm.getRawValue();
     debugger;
-    if(this.clientes.codCliente == 0)
+    if(this.clientes.idCliente == 0)
     {
       this.createClientes();
       

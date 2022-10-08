@@ -37,14 +37,8 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" name="dir_cliente" id="dir_cliente" class="form-control" disabled
-                                        [(ngModel)]="clienteSelect.email" required>
-                                </div>
-
-                            </div>
+                           
+        
                             <div id="div_registro_cliente" style="display: none;">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
@@ -200,13 +194,12 @@
                     <tr
                         *ngFor="let d of clienteList | paginate: { itemsPerPage: 5, currentPage: page },let indice=index">
                         <td>{{ indice + 1 }}</td>
-                        <td hidden>{{ d.codCliente }} </td>
+                        <td hidden>{{ d.idCliente }} </td>
                         <td>{{ d.nombres }}</td>
-                        <td>{{ d.ruc }}</td>
+                        <td>{{ d.apellidos }}</td>
                         <td>{{ d.dni}}</td>
                         <td>{{ d.direccion }}</td>
                         <td>{{ d.celular }}</td>
-                        <td hidden>{{ d.email}}</td>
 
                         <td>
 
@@ -266,8 +259,8 @@
                         <td>{{ p.nombreProducto }}</td>
                         <td>{{ p.descripcion }}</td>
                         <td>{{ p.idCategoria }}</td>
-                        <td>{{ p.precioCompra}}</td>
-                        <td>{{ p.precioVenta }}</td>
+                        <td>{{ p.precioProducto}}</td>
+
                         <td>{{ p.cantidad}}</td>
                     
                     </tr>

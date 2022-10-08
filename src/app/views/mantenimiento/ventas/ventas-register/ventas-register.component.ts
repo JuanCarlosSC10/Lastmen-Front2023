@@ -184,7 +184,6 @@ export class VentasRegisterComponent implements OnInit {
       detalleVenta.idDetalleVenta = 0;
       detalleVenta.idProducto = producto.idProducto;
       detalleVenta.idVenta = 0;
-      detalleVenta.precioVenta = producto.precioVenta;
       detalleVenta.nombre_producto = producto.nombreProducto;
       detalleVenta.descripcion_producto = producto.descripcion;
 
@@ -224,7 +223,7 @@ export class VentasRegisterComponent implements OnInit {
   procesarVenta() {
     let venta: any = this.myForm.value;
     venta.idUsuario = this.usuario.idUsuario;
-    venta.idCliente = this.clienteSelect.codCliente;
+    venta.idCliente = this.clienteSelect.idCliente;
     venta.fecha=this.pipe.transform(Date.now(), 'dd/MM/yyyy');
     venta.tipoComprobante="Boleta";
     

@@ -14,10 +14,10 @@ const routes: Routes = [
     path:'cliente',
     loadChildren:() => import("./clientes/clientes.module").then(x => x.ClientesModule)
   },
-  // {
-  //   path:'proveedor',
-  //   loadChildren:() => import("./proveedor/proveedor.module").then(x => x.ProveedorModule)
-  // },
+  {
+    path:'proveedor',
+    loadChildren:() => import("./proveedor/proveedor.module").then(x => x.ProveedorModule)
+  },
   {
     path:'categoria',
     loadChildren:() => import("./categoria/categoria.module").then(x => x.CategoriaModule)
