@@ -77,7 +77,7 @@ export class VentasRegisterComponent implements OnInit {
 
   newVentaArray(detalle: DetalleVentaModel): FormGroup {
     return this.fb.group({
-      idDetalleVenta: [{ value: detalle.idDetalleVenta, disabled: true }, [Validators.required]],
+      idDetalleVenta: [{ value: detalle.idDetalleCompra, disabled: true }, [Validators.required]],
       idVenta: [detalle.idVenta, [Validators.required]],
       idProducto: [detalle.idProducto, [Validators.required]],
       cantidad: [detalle.cantidad, [Validators.required]],
@@ -87,6 +87,7 @@ export class VentasRegisterComponent implements OnInit {
       descripcion_producto: [detalle.descripcion_producto, []],
       stock: [detalle.stock, []],
       precio_total: [0, []],
+      
     })
   }
 
@@ -181,11 +182,12 @@ export class VentasRegisterComponent implements OnInit {
       detalleVenta.stock = producto.cantidad;
       detalleVenta.cantidad = 0;
       detalleVenta.descuento = 0;
-      detalleVenta.idDetalleVenta = 0;
+      detalleVenta.idDetalleCompra = 0;
       detalleVenta.idProducto = producto.idProducto;
       detalleVenta.idVenta = 0;
       detalleVenta.nombre_producto = producto.nombreProducto;
       detalleVenta.descripcion_producto = producto.descripcion;
+      detalleVenta.precioVenta= producto.precioProducto;
 
       this.DetalleVentas.push(this.newVentaArray(detalleVenta));
     }

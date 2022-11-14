@@ -18,7 +18,7 @@ export class detalleVentaListComponent implements OnInit {
   tituloModal:string = "";
   detalleExport: any = [];
   headerColumns: any=[
-    {header: 'ID DETALLE VENTA',datakey:'idDetalleVenta'},
+    {header: 'ID DETALLE VENTA',datakey:'idDetalleCompra'},
     {header: 'IDVENTA',datakey:'idVenta'},
     {header: 'IDPRODUCTO',datakey:'idProducto'},
     {header: 'CANTIDAD',datakey:'cantidad'},
@@ -58,7 +58,7 @@ export class detalleVentaListComponent implements OnInit {
         this.detalleVenta = data;
         this.detalleVenta.map(x => {
           this.detalleExport.push({
-          'idDetalleVenta': x.idDetalleVenta,
+          'idDetalleVenta': x.idDetalleCompra,
           'idVenta': x.idVenta,
           'idProducto': x.idProducto,
           'cantidad': x.cantidad,
@@ -119,7 +119,7 @@ export class detalleVentaListComponent implements OnInit {
 
     if(res) // si es verdadero
     {
-      this._detalleVentaservice.delete(detalleVenta.idDetalleVenta).subscribe(
+      this._detalleVentaservice.delete(detalleVenta.idDetalleCompra).subscribe(
         (data:number)=>{
           console.log(data);
           alert("registro eliminado de forma satisfactoria");

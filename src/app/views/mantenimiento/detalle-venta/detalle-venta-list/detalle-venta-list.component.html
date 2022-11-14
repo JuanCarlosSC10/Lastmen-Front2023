@@ -15,7 +15,7 @@
       <tbody>
         <tr *ngFor="let d of detalleVenta,let indice=index">
           <td >{{ indice+1 }}</td>
-          <td hidden>{{ d.idDetalleVenta }}</td>
+          <td hidden>{{ d.idDetalleCompra }}</td>
           <td>{{ d.idVenta }}</td>
           <td>{{ productoTipoMap.get(d.idProducto) }}</td>
           <td>{{ d.cantidad }}</td>

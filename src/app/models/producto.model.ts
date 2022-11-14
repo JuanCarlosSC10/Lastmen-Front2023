@@ -10,6 +10,7 @@ export class ProductoModel {
     fechaIngreso: string;
     fechaVencimiento: string;
     descripcion: string;
+    url_Img: string;
    
 
     constructor(){
@@ -24,6 +25,7 @@ export class ProductoModel {
         this.fechaIngreso= "";
         this.fechaVencimiento= "";
         this.descripcion="";
+        this.url_Img="";
        ;
     }
 }

@@ -66,8 +66,12 @@ export class ProductoListComponent implements OnInit {
           'nombreProducto': x.nombreProducto,
           'descripcion': x.descripcion,
           'idCategoria': x.idCategoria,
+          'lote': x.lote,
+          'Unidad_Medida': x.unidad_Medida,
+          'PrecioProducto': x.precioProducto,
           'cantidad': x.cantidad,
-          'fechaIngreso': x.fechaIngreso,         
+          'FechaIngreso': x.fechaIngreso,  
+          'FechaVencimiento': x.fechaVencimiento,             
           });
         });
       },
