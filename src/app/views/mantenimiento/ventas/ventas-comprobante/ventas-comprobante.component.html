@@ -45,7 +45,7 @@
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Descripcion</th>
+          <!-- <th>Descripcion</th> -->
           <th>Cant.</th>
           <th>Precio Unitario</th>
           <th>Descuento</th>
@@ -55,11 +55,11 @@
       <tbody>
         <tr *ngFor="let d of venta.detalleVentas">
           <td>{{d.producto.nombreProducto}}</td>
-          <td>{{d.producto.descripcion}}</td>
+          <!-- <td>{{d.producto.descripcion}}</td> -->
           <td>{{d.cantidad}}</td>
           <td>{{d.precioVenta}}</td>
           <td>{{d.descuento}}</td>
-          <td>{{(d.cantidad * d.precioVenta) -d.descuento}}</td>
+          <td>{{(d.cantidad * d.precioVenta) - d.descuento}}</td>
         </tr>
        
       </tbody>

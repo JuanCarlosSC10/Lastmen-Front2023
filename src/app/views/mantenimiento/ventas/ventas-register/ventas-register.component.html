@@ -142,14 +142,9 @@
                     </table>
                     <div style="text-align: center;" >
                        <div>
-                        <a (click)="procesarVenta()" class="btn btn-success text-center" id="btn_facturar_venta"><i class="fas fa-save"></i>
+                        <a (click)="procesarVenta()"  class="btn btn-success text-center" id="btn_facturar_venta" (click)="generarComprobante(templatecomprobante)"><i class="fas fa-save"></i>
                             Generar Venta</a>
                        </div> 
-                       
-                    </div>
-                    <div>
-                        <a (click)="generarComprobante(templatecomprobante)" class="btn btn-warning float-end" id="btn_facturar_venta"><i class="fas fa-fax"></i>
-                            Generar Comprobante</a>
                     </div>
                     <div>
                         <a (click)="listVenta(templatelistaventas)" class="btn btn-warning text-center" id="btn_facturar_venta"><i class="fas fa-list"></i>
