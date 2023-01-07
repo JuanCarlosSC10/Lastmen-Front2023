@@ -39,7 +39,6 @@ export class ProductoRegisterComponent implements OnInit {
       nombreProducto: [null, [Validators.required]],
       precioCompra: [null, [Validators.required]],
       precioVenta: [null, [Validators.required]],
-      precioProducto: [null, [Validators.required]],
       cantidad: [null, [Validators.required]],
       lote: [null, [Validators.required]],
       unidad_Medida: [null, [Validators.required]],

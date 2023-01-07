@@ -43,7 +43,7 @@ export class VentasListComponent implements OnInit {
     this._clienteservice.getAll().subscribe(data=>{
       this.clienteTiplist=data;
       for(let i=0; i<data.length;i++){
-        this.clienteTipoMap.set(this.clienteTiplist[i].codCliente,this.clienteTiplist[i].nombres);
+        this.clienteTipoMap.set(this.clienteTiplist[i].idCliente,this.clienteTiplist[i].nombres);
       }
     })    
   }

@@ -19,9 +19,9 @@
           <td>{{ d.idVenta }}</td>
           <td>{{ productoTipoMap.get(d.idProducto) }}</td>
           <td>{{ d.cantidad }}</td>
-          <td>{{ d.precioVenta | currency: "S/. "}}</td>
+          <td>{{ d.precio_unitario | currency: "S/. "}}</td>
           <td>{{ d.descuento | currency: "S/. "}}</td>
-          <td>{{ (d.cantidad * d.precioVenta) -d.descuento | currency: "S/. "}}</td>          
+          <td>{{ (d.cantidad * d.precio_unitario) - d.descuento | currency: "S/. "}}</td>          
         </tr>
       </tbody>
     </table>

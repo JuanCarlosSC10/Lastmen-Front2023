@@ -82,13 +82,14 @@ export class VentasRegisterComponent implements OnInit {
       idProducto: [detalle.idProducto, [Validators.required]],
       cantidad: [detalle.cantidad, [Validators.required]],
       descuento: [detalle.descuento, [Validators.required]],
-      precioVenta: [detalle.precioVenta, [Validators.required]],
+      precio_unitario: [detalle.precio_unitario, [Validators.required]],
       nombre_producto: [detalle.nombre_producto, []],
       descripcion_producto: [detalle.descripcion_producto, []],
       stock: [detalle.stock, []],
       precio_total: [0, []],
       
     })
+    debugger;
   }
 
   obetenerUsuario() {
@@ -187,7 +188,7 @@ export class VentasRegisterComponent implements OnInit {
       detalleVenta.idVenta = 0;
       detalleVenta.nombre_producto = producto.nombreProducto;
       detalleVenta.descripcion_producto = producto.descripcion;
-      detalleVenta.precioVenta= producto.precioProducto;
+      detalleVenta.precio_unitario= producto.precioVenta;
 
       this.DetalleVentas.push(this.newVentaArray(detalleVenta));
     }
@@ -208,7 +209,7 @@ export class VentasRegisterComponent implements OnInit {
     let obj_1: DetalleVentaModel;
     obj_1 = new DetalleVentaModel();
     obj_1 = this.DetalleVentas.controls[i].value;
-    let precio_total = (obj_1.cantidad * obj_1.precioVenta) - obj_1.descuento;
+    let precio_total = (obj_1.cantidad * obj_1.precio_unitario) - obj_1.descuento;
 
     let obj = this.DetalleVentas.controls[i].get("precio_total")?.setValue(precio_total);
 

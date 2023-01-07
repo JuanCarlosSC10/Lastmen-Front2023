@@ -62,7 +62,7 @@ export class detalleVentaListComponent implements OnInit {
           'idVenta': x.idVenta,
           'idProducto': x.idProducto,
           'cantidad': x.cantidad,
-          'precioVenta': x.precioVenta,
+          'precioVenta': x.precio_unitario,
           'descuento': x.descuento,
                   
           });

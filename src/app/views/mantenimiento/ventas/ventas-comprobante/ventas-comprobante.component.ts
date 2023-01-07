@@ -27,11 +27,11 @@ export class VentasComprobanteComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.venta);
-    this.obetenerCliente();
+    this.obtenerCliente();
     this.obtenerproducto();
     this.venta.detalleVentas.forEach(x => {
-      this.total = this.total + (x.precioVenta * x.cantidad);
-
+    this.total = this.total + ((x.precio_unitario * x.cantidad)) - x.descuento;
+  
     });
 
   }
@@ -54,7 +54,7 @@ export class VentasComprobanteComponent implements OnInit {
     );
   }
 
-  obetenerCliente() {
+  obtenerCliente() {
     this._clienteservice.getById(this.venta.idCliente).subscribe(
       (data: any) => {
 

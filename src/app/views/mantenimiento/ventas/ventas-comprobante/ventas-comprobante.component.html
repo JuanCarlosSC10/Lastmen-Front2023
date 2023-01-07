@@ -22,15 +22,12 @@
   <div class="row fact-info mt-3">
     <div class="col-3">
       <h5>Nombres y apellidos</h5>
-      <p>
-        {{cliente.nombres}}
+      <p>{{cliente.nombres}}
       </p>
     </div>
     <div class="col-3">
       <h5>DNI</h5>
-      <p>
-        {{cliente.dni}}
-      </p>
+      <p>{{cliente.dni}}</p>
     </div>
     <div class="col-3">
       <h5>Fecha</h5>
@@ -57,9 +54,9 @@
           <td>{{d.producto.nombreProducto}}</td>
           <!-- <td>{{d.producto.descripcion}}</td> -->
           <td>{{d.cantidad}}</td>
-          <td>{{d.precioVenta}}</td>
+          <td>{{d.precio_unitario}}</td>
           <td>{{d.descuento}}</td>
-          <td>{{(d.cantidad * d.precioVenta) - d.descuento}}</td>
+          <td>{{(d.cantidad * d.precio_unitario) - d.descuento}}</td>
         </tr>
        
       </tbody>
