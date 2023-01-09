@@ -2,6 +2,7 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {  ProveedorModel } from 'src/app/models/proveedor.model';
 import { ProveedorService } from 'src/app/service/proveedor.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -70,21 +71,44 @@ export class ProveedorListComponent implements OnInit {
 
   modalDelete(proveedor:ProveedorModel)
   {
-    let res = confirm("Está seguro de eliminar el registro");
+    let res= Swal.fire({
+      title: '¿Está seguro de eliminar el registro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._proveedorService.delete(proveedor.idProveedor).subscribe(
+          (data:number)=>{
+            console.log(data);
+        Swal.fire(
+          'Eliminado!',
+          'registro eliminado de forma satisfactoría.',
+          'success'
+        )
+        this.getAllProveedor();
+        });
+        
+      }
+    })
+    // let res = confirm("Está seguro de eliminar el registro");
 
-    if(res) // si es verdadero
-    {
-      this._proveedorService.delete(proveedor.idProveedor).subscribe(
-        (data:number)=>{
-          console.log(data);
-          alert("registro eliminado de forma satisfactoría");
-          this.getAllProveedor();
-        },
-        err =>{
-          //alert("ocurrio un error");
-        }
-      );
-    }
+    // if(res) // si es verdadero
+    // {
+    //   this._proveedorService.delete(proveedor.idProveedor).subscribe(
+    //     (data:number)=>{
+    //       console.log(data);
+    //       alert("registro eliminado de forma satisfactoría");
+    //       this.getAllProveedor();
+    //     },
+    //     err =>{
+    //       //alert("ocurrio un error");
+    //     }
+    //   );
+    // }
   }
 
 }

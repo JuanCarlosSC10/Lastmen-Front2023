@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProveedorModel } from 'src/app/models/proveedor.model';
 import { ProveedorService } from 'src/app/service/proveedor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-proveedor-register',
@@ -65,7 +66,14 @@ export class ProveedorRegisterComponent implements OnInit {
   {
     this._proveedorService.create(this.proveedor).subscribe(
       (data:ProveedorModel)=>{
-        alert("Registro creado de forma satisfactoría");
+        //alert("Registro creado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro creado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {
@@ -78,7 +86,14 @@ export class ProveedorRegisterComponent implements OnInit {
   {
     this._proveedorService.update(this.proveedor).subscribe(
       (data:ProveedorModel)=>{
-        alert("Registro actualizado de forma satisfactoría");
+        //alert("Registro actualizado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro actualizado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {

@@ -2,6 +2,7 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {  ClienteModel } from 'src/app/models/clientes.model';
 import { ClientesService } from 'src/app/service/clientes.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -70,21 +71,45 @@ export class ClientesListComponent implements OnInit {
 
   modalDelete(clientes:ClienteModel)
   {
-    let res = confirm("Está seguro de eliminar el registro");
 
-    if(res) // si es verdadero
-    {
-      this._clientesService.delete(clientes.idCliente).subscribe(
-        (data:number)=>{
-          console.log(data);
-          alert("registro eliminado de forma satisfactoría");
-          this.getAllClientes();
-        },
-        err =>{
-          //alert("ocurrio un error");
-        }
-      );
-    }
+    let res= Swal.fire({
+      title: '¿Está seguro de eliminar el registro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._clientesService.delete(clientes.idCliente).subscribe(
+            (data:number)=>{
+            console.log(data);
+        Swal.fire(
+          'Eliminado!',
+          'registro eliminado de forma satisfactoría.',
+          'success'
+        )
+        this.getAllClientes();
+        });
+        
+      }
+    })
+    // let res = confirm("Está seguro de eliminar el registro");
+
+    // if(res) // si es verdadero
+    // {
+    //   this._clientesService.delete(clientes.idCliente).subscribe(
+    //     (data:number)=>{
+    //       console.log(data);
+    //       alert("registro eliminado de forma satisfactoría");
+    //       this.getAllClientes();
+    //     },
+    //     err =>{
+    //       //alert("ocurrio un error");
+    //     }
+    //   );
+    // }
   }
 
 }

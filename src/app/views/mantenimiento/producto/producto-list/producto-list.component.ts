@@ -4,6 +4,7 @@ import {  ProductoModel } from 'src/app/models/producto.model';
 import { ProductoService } from 'src/app/service/producto.service';
 import { CategoriaService} from'src/app/service/categoria.service';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto-list',
@@ -127,22 +128,49 @@ export class ProductoListComponent implements OnInit {
 
   modalDelete(producto:ProductoModel)
   {
-    let res = confirm("Está seguro de eliminar el registro");
 
-    if(res) // si es verdadero
-    {
-      this._productoService.delete(producto.idProducto).subscribe(
-        (data:number)=>{
+    let res= Swal.fire({
+      title: '¿Está seguro de eliminar el registro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._productoService.delete(producto.idProducto).subscribe(
+          (data:number)=>{
           console.log(data);
-          alert("registro eliminado de forma satisfactoría");
-          this.getAllProducto();
-        },
-        err =>{
-          //alert("ocurrio un error");
-        }
-      );
-    }
+        Swal.fire(
+          'Eliminado!',
+          'registro eliminado de forma satisfactoría.',
+          'success'
+        )
+        this.getAllProducto();
+        });
+        
+      }
+    })
+    // let res = confirm("Está seguro de eliminar el registro");
+
+    // if(res) // si es verdadero
+    // {
+    //   this._productoService.delete(producto.idProducto).subscribe(
+    //     (data:number)=>{
+    //       console.log(data);
+    //       alert("registro eliminado de forma satisfactoría");
+    //       this.getAllProducto();
+    //     },
+    //     err =>{
+    //       //alert("ocurrio un error");
+    //     }
+    //   );
+    // }
+
   }
+
+  
   PrintElem() {
     var mywindow: any = window.open('', 'PRINT', 'height=400,width=600');
     let html = document.getElementById("app2")?.innerHTML;

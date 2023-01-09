@@ -5,6 +5,7 @@ import { VentasService } from 'src/app/service/ventas.service';
 import {ClientesService} from'src/app/service/clientes.service';
 import {UsuarioService} from'src/app/service/usuario.service';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ventas-list',
@@ -107,7 +108,14 @@ export class VentasListComponent implements OnInit {
       this._ventasService.delete(ventas.idVenta).subscribe(
         (data:number)=>{
           console.log(data);
-          alert("registro eliminado de forma satisfactoría");
+          //alert("registro eliminado de forma satisfactoría");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'registro eliminado de forma satisfactoría',
+            showConfirmButton: false,
+            timer:1650
+            });
           this.getAllVentas();
         },
         err =>{

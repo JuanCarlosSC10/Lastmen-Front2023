@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClienteModel } from 'src/app/models/clientes.model';
 import { ClientesService } from 'src/app/service/clientes.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clientes-register',
@@ -66,7 +67,14 @@ export class ClientesRegisterComponent implements OnInit {
   {
     this._clientesService.create(this.clientes).subscribe(
       (data:ClienteModel)=>{
-        alert("Registro creado de forma satisfactoría");
+       // alert("Registro creado de forma satisfactoría");
+       Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registro creado de forma satisfactoría',
+        showConfirmButton: false,
+        timer:1650
+        });
         this.closeModalEmmit.emit(true);
       },
       err => {
@@ -79,7 +87,14 @@ export class ClientesRegisterComponent implements OnInit {
   {
     this._clientesService.update(this.clientes).subscribe(
       (data:ClienteModel)=>{
-        alert("Registro actualizado de forma satisfactoría");
+        //alert("Registro actualizado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro actualizado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {

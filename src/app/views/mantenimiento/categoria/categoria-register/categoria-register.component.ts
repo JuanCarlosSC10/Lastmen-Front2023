@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriaModel } from 'src/app/models/categoria.model';
 import { CategoriaService } from 'src/app/service/categoria.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -64,7 +65,14 @@ export class CategoriaRegisterComponent implements OnInit {
   {
     this._categoriaService.create(this.categoria).subscribe(
       (data:CategoriaModel)=>{
-        alert("Registro creado de forma satisfactoría");
+       // alert("Registro creado de forma satisfactoría");
+       Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registro creado de forma satisfactorías',
+        showConfirmButton: false,
+        timer:1650
+        });
         this.closeModalEmmit.emit(true);
       },
       err => {
@@ -77,7 +85,14 @@ export class CategoriaRegisterComponent implements OnInit {
   {
     this._categoriaService.update(this.categoria).subscribe(
       (data:CategoriaModel)=>{
-        alert("Registro actualizado de forma satisfactoría");
+        //alert("Registro actualizado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro actualizado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {

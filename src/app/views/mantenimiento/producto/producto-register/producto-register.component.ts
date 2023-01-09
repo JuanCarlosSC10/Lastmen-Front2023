@@ -5,6 +5,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 import{CategoriaService} from'src/app/service/categoria.service';
 import{ProveedorService} from'src/app/service/proveedor.service';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -96,7 +97,14 @@ export class ProductoRegisterComponent implements OnInit {
     debugger;
     this._productoService.create(this.producto).subscribe(
       (data:ProductoModel)=>{
-        alert("Registro creado de forma satisfactoría");
+        //alert("Registro creado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro creado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {
@@ -109,7 +117,14 @@ export class ProductoRegisterComponent implements OnInit {
   {
     this._productoService.update(this.producto).subscribe(
       (data:ProductoModel)=>{
-        alert("Registro actualizado de forma satisfactoría");
+        //alert("Registro actualizado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro actualizado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {

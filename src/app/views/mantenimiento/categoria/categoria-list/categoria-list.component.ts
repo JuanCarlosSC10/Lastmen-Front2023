@@ -2,6 +2,7 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CategoriaModel } from 'src/app/models/categoria.model';
 import { CategoriaService } from 'src/app/service/categoria.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -70,21 +71,45 @@ export class CategoriaListComponent implements OnInit {
 
   modalDelete(categoria:CategoriaModel)
   {
-    let res = confirm("Está seguro de eliminar el registro");
 
-    if(res) // si es verdadero
-    {
-      this._categoriaService.delete(categoria.idCategoria).subscribe(
-        (data:number)=>{
-          console.log(data);
-          alert("registro eliminado de forma satisfactoría");
-          this.getAllCategoria();
-        },
-        err =>{
-          //alert("ocurrio un error");
-        }
-      );
-    }
+    let res= Swal.fire({
+      title: '¿Está seguro de eliminar el registro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._categoriaService.delete(categoria.idCategoria).subscribe(
+            (data:number)=>{
+            console.log(data);
+        Swal.fire(
+          'Eliminado!',
+          'registro eliminado de forma satisfactoría.',
+          'success'
+        )
+        this.getAllCategoria();
+        });
+        
+      }
+    })
+    // let res = confirm("Está seguro de eliminar el registro");
+
+    // if(res) // si es verdadero
+    // {
+    //   this._categoriaService.delete(categoria.idCategoria).subscribe(
+    //     (data:number)=>{
+    //       console.log(data);
+    //       alert("registro eliminado de forma satisfactoría");
+    //       this.getAllCategoria();
+    //     },
+    //     err =>{
+    //       //alert("ocurrio un error");
+    //     }
+    //   );
+    // }
   }
 
 }

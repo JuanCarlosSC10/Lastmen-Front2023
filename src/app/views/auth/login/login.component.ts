@@ -4,6 +4,7 @@ import { LoginRequestModel } from 'src/app/models/common/login-request.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { SesionService } from 'src/app/service/sesion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,14 @@ export class LoginComponent implements OnInit {
         this._router.navigate(["dashboard"]);
       },
       err => {
-        alert("Contraseña y/o Usuario incorrecot");
+        //alert("Contraseña y/o Usuario incorrecoto");
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Contraseña y/o Usuario incorrecoto',
+          showConfirmButton: false,
+          timer:1650
+          });
         
       }
     );

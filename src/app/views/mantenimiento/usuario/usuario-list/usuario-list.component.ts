@@ -2,6 +2,7 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {  UsuarioModel} from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -69,21 +70,45 @@ export class UsuarioListComponent implements OnInit {
 
   modalDelete(usuario:UsuarioModel)
   {
-    let res = confirm("Está seguro de eliminar el registro");
 
-    if(res) // si es verdadero
-    {
-      this._usuarioService.delete(usuario.idUsuario).subscribe(
-        (data:number)=>{
-          console.log(data);
-          alert("registro eliminado de forma satisfactoría");
-          this.getAllUsuario();
-        },
-        err =>{
-          //alert("ocurrio un error");
-        }
-      );
-    }
+    let res= Swal.fire({
+      title: '¿Está seguro de eliminar el registro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._usuarioService.delete(usuario.idUsuario).subscribe(
+           (data:number)=>{
+            console.log(data);
+        Swal.fire(
+          'Eliminado!',
+          'registro eliminado de forma satisfactoría.',
+          'success'
+        )
+        this.getAllUsuario();
+        });
+        
+      }
+    })
+    // let res = confirm("Está seguro de eliminar el registro");
+
+    // if(res) // si es verdadero
+    // {
+    //   this._usuarioService.delete(usuario.idUsuario).subscribe(
+    //     (data:number)=>{
+    //       console.log(data);
+    //       alert("registro eliminado de forma satisfactoría");
+    //       this.getAllUsuario();
+    //     },
+    //     err =>{
+    //       //alert("ocurrio un error");
+    //     }
+    //   );
+    // }
   }
 
 }

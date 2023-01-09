@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleModel } from 'src/app/models/role.model';
 import { RoleService } from 'src/app/service/role.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-role-list',
@@ -52,11 +53,25 @@ export class RoleListComponent implements OnInit {
     {
       this._roleService.delete(id).subscribe(
         (data:number)=> {
-          alert("registro eliminado de forma satisfactoria");
+          //alert("registro eliminado de forma satisfactoria");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'registro eliminado de forma satisfactoria',
+            showConfirmButton: false,
+            timer:1650
+            });
           this.getAllRoles();
         },
         err => {
-          alert("error");
+          //alert("error");
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Ocurio un Error',
+            showConfirmButton: false,
+            timer:1650
+            });
         }
       );
     }

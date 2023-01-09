@@ -10,6 +10,7 @@ import { ProductoModel } from 'src/app/models/producto.model';
 import { ProductoService } from 'src/app/service/producto.service';
 import { DetalleVentaModel } from 'src/app/models/detalleVentas.model';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 
@@ -153,7 +154,14 @@ export class VentasRegisterComponent implements OnInit {
     debugger;
     this._ventasService.create(this.ventas).subscribe(
       (data: VentasModel) => {
-        alert("Registro creado de forma satisfactoría");
+       // alert("Registro creado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro creado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {
@@ -165,7 +173,14 @@ export class VentasRegisterComponent implements OnInit {
   updateVentas() {
     this._ventasService.update(this.ventas).subscribe(
       (data: VentasModel) => {
-        alert("Registro actualizado de forma satisfactoría");
+       // alert("Registro actualizado de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro actualizado de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.closeModalEmmit.emit(true);
       },
       err => {
@@ -233,7 +248,14 @@ export class VentasRegisterComponent implements OnInit {
     this._ventasService.create(venta).subscribe(
       (data: any) => {
         console.log();
-        alert("Venta Realizada de forma satisfactoría");
+        //alert("Venta Realizada de forma satisfactoría");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Venta Realizada de forma satisfactoría',
+          showConfirmButton: false,
+          timer:1650
+          });
         this.miVenta=data;
         console.log(this.miVenta);
       },
