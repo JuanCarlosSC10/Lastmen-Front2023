@@ -4,8 +4,23 @@ hr{
   background-color: black;
 
 }
+.boleto {
+        border-radius: 9px;
+        margin-left: 31%;  
+        border-width: 1.7px;
+        border-style: solid;
+        width: 38%;
+        border-color: black;
+        padding: 10px;
+}
 
+.boleto2{
+  text-align: center;
+}
 
+.header{
+  text-align: center;
+}
 
 
 
