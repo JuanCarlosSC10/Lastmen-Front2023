@@ -1,79 +1,105 @@
-<div id="app2" class="col-11">
+<link rel="stylesheet" href="./ventas-comprobante.component.css">
 
-  <div class="row my-3">
-    <div class="col-10">
-      <img src="./assets/imagenes/logoLastmen.png" alt="" width="200px">
+
+
+  <div class="boleto"  
+    style="
+    border-radius: 9px;
+        margin-left: 31%;  
+        border-width: 1.7px;
+        border-style: solid;
+        width: 38%;
+        border-color: black;
+        padding: 10px;" 
+        >
+
+    <div style="text-align: center;">
+
+      <img  src="./assets/imagenes/logoLastmen.png" alt="" width="100px" >
+
     </div>
-    <div class="col-10">
-      <p>RAZÓN SOCIAL: </p>
-      <p>Productos Naturales LASTMEN</p>
-      <br>
-      <p>DIRECCIÓN: </p>
-      <p>Av. Tito Jaime Fernande3z 258 - Junín - Tingo Maria</p>
+    <div class="header"> 
+      <!-- <p>RAZÓN SOCIAL: </p> -->
+      <p style="text-align: center;">Productos Naturales LASTMEN</p>
+      <p style="text-align: center;"> Av. Tito Jaime Fernande3z 258 - Junín - Tingo Maria</p>
+      <p style="text-align: center;"> R.U.C. N° 10443352487 </p>
+      <h6 style="text-align: center;" >BOLETA DE VENTA ELECTRONICA</h6>
+      <h6 style="text-align: center;" >NRO OPERACION: 102</h6>
+      <p> 12/12/12</p>
     </div>
-    <div class="col-2">
+      <hr style="color: black;;"/>
+      <div class="cliente">
+      
+      <h6>Cliente: {{cliente.nombres}}</h6>
+      <h6>DNI: {{cliente.dni}}</h6> 
+      <h6>Dirección: {{cliente.direccion}}</h6> 
+      
+    </div>
+    <!-- <div class="col-2">
       <h5>N° de factura: 103</h5>
     </div>
 
-  </div>
+  </div> -->
 
-  <hr />
+  <hr  />
 
-  <div class="row fact-info mt-3">
-    <div class="col-3">
-      <h5>Nombres y apellidos</h5>
+  <div >
+    <!-- <div  style="text-align: left;">
+      <h6>Cliente:</h6>
       <p>{{cliente.nombres}}
       </p>
-    </div>
-    <div class="col-3">
-      <h5>DNI</h5>
+    </div> -->
+    <!-- <div  style="text-align: left;">
+      <h6>DNI:</h6>
       <p>{{cliente.dni}}</p>
-    </div>
-    <div class="col-3">
-      <h5>Fecha</h5>
-    </div>
-    <div class="col-3">
+    </div> -->
+    <!-- <div  style="text-align: left;">
+      <h6>Fecha:</h6>
+    </div> -->
+    <!-- <div  style="text-align: left;">
+      <h6>Total:</h6>
       <p> {{venta.fecha}}</p>
-    </div>
+    </div> -->
   </div>
 
-  <div class="row my-5">
-    <table class="table table-borderless factura">
+  <div class="producto">
+    <table>
       <thead>
         <tr>
-          <th>Nombre</th>
           <!-- <th>Descripcion</th> -->
-          <th>Cant.</th>
-          <th>Precio Unitario</th>
-          <th>Descuento</th>
-          <th>Importe</th>
+          <th style="padding:3%;">Cant.</th>
+          <th style="padding:10%;">Descripción</th> 
+          <th style="padding:20%;">P.Unit</th>
+          <!-- <th>Descuento</th> -->
+          <th style="padding:28%;">Total</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let d of venta.detalleVentas">
-          <td>{{d.producto.nombreProducto}}</td>
-          <!-- <td>{{d.producto.descripcion}}</td> -->
           <td>{{d.cantidad}}</td>
+          
+          <!-- <td>{{d.producto.nombreProducto}}</td> -->
           <td>{{d.precio_unitario}}</td>
-          <td>{{d.descuento}}</td>
+          <!-- <td>{{d.descuento}}</td> -->
           <td>{{(d.cantidad * d.precio_unitario) - d.descuento}}</td>
+          <th>S/. {{total}}</th>
         </tr>
-       
       </tbody>
       <tfoot>
-        <tr>
+        <!-- <tr>
           <th></th>
           <th></th>
           <th>Total</th>
           <th>S/. {{total}}</th>
-        </tr>
+        </tr> -->
       </tfoot>
     </table>
   </div>
-  <div style="text-align: center;">
-                       
-    <a (click)="PrintElem()" class="btn btn-success text-center" id="btn_facturar_venta"><i class="fas fa-print"></i>
-        Imprimir</a>
+  <hr/>
 </div>
 
+<div style="text-align: center;">
+                       
+  <a (click)="PrintElem()" class="btn btn-success text-center" id="btn_facturar_venta"><i class="fas fa-print"></i>
+      Imprimir</a>
 </div>

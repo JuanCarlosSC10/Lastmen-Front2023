@@ -1,3 +1,18 @@
+
+hr{
+  height: 3px;
+  background-color: black;
+
+}
+
+
+
+
+
+
+
+
+/* 
 .factura {
     table-layout: fixed;
   }
@@ -30,4 +45,4 @@
   
   .cond {
     border-top: solid 2px #000;
-  }
+  } */
